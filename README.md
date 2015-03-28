@@ -10,4 +10,6 @@ i - if typed during limit prompt it sets the limit to infinity.
 rename - if typed during group prompt it allows you to rename a group directly from the program. 
 
 
-Built by Ethan Lebowitz, the unrealDuck.
+The code can be found at https://github.com/unrealduck/randomiser
+
+Made by Ethan Lebowitz.
