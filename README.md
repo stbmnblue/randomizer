@@ -1,11 +1,15 @@
 # randomiser
-+My alternative for Popsicle sticks built entirely in batch! lol.
+My alternative for Popsicle sticks built entirely in batch! lol.
 
-+Some commands:
-+mix - if typed during group prompt it allows you to mix up to 6 groups.
-+i - if typed during limit prompt it sets the limit to infinity.
-+rename - if typed during group prompt it allows you to rename a group directly from the program. 
+Some commands:
 
-+The code can be found at https://github.com/unrealduck/randomiser
+mix - if typed during group prompt it allows you to mix up to 6 groups.
 
-+Made by Ethan Lebowitz.
+i - if typed during limit prompt it sets the limit to infinity.
+
+rename - if typed during group prompt it allows you to rename a group directly from the program. 
+
+
+The code can be found at https://github.com/unrealduck/randomiser
+
+Made by Ethan Lebowitz.
