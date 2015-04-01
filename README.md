@@ -1,4 +1,4 @@
-# randomiser
+# randomizer
 My alternative for Popsicle sticks built entirely in batch! lol.
 
 Some commands:
