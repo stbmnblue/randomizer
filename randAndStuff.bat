@@ -41,6 +41,11 @@ for /F "tokens=*" %%A in (lists/slist%switch%.txt) do (
 :1
 set /p lims="limits: "
 if "%lims%"=="i" goto 3
+if "%lims%"=="pair" (
+	set /a pairnum = 0
+	set /a lims=1
+	goto pair
+)
 if not %lims% GEQ 1 (
 echo "%lims%" is not a valid limit.
 goto 1
@@ -140,5 +145,59 @@ set /a rs = %random% %% snum + 1
 set lstudent=!lstudent%rs%!
 if "%lstudent%" LEQ "%lims%" set /a lstudent%rs%+=1
 echo !student%rs%! 
+pause
+goto setup
+:pair
+set /p filename="file name: "
+break>%filename%.txt
+set /a realpairnum=1
+goto pairfile
+:pairfile
+set /a rsa = %random% %% snum + 1
+set /a rsb = %random% %% snum + 1
+if %rsa%==%rsb% goto pairfile
+setlocal enabledelayedexpansion
+if !lstudent%rsa%! GEQ 1 ( 
+endlocal
+goto pairfile
+)
+if !lstudent%rsb%! GEQ 1 ( 
+endlocal
+goto pairfile
+) 
+echo ---------------------  pair %realpairnum%  --------------------->>%filename%.txt
+echo !student%rsa%!>>%filename%.txt
+echo !student%rsb%!>>%filename%.txt
+endlocal
+set /a realpairnum+=1
+set /a pairnum+=2
+set /a lstudent%rsa%+=1
+set /a lstudent%rsb%+=1
+set /a checkout=pairnum+1
+if %checkout%==%snum% goto last
+if %pairnum%==%snum% (
+echo ----------------------------------------------------->>%filename%.txt
+echo complete
+pause
+goto setup
+)
+if not %pairnum% GEQ %snum% ( goto pairfile )
+:last
+setlocal enabledelayedexpansion
+set /a rsc=%random% %% snum + 1
+set lstudent=!lstudent%rsc%!
+set outlier=!student%rsc%!
+if not "!lstudent%rsc%!" GEQ "%lims%" (
+echo %outlier%>> %filename%.txt
+set /a lstudent%rs%+=1
+set /a pairnum+=1
+)
+if "!lstudent%rsc%!" GEQ "%lims%" (
+endlocal
+goto last
+)
+endlocal
+echo ----------------------------------------------------->>%filename%.txt
+echo complete
 pause
 goto setup
